@@ -20,7 +20,7 @@
               <div>
                 <input type="tel" name="contact" id="contact"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                  placeholder="89999999999" required />
+                  placeholder="Контакты" required />
               </div>
               <div>
                 <input type="date" name="date" id="date"

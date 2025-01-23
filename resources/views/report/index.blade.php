@@ -8,10 +8,10 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <x-nav-link :href="route('report.create')" type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-3 text-center mb-11">Создать</x-nav-link>
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-3 text-center mb-11 ml-5 mr-5">Создать</x-nav-link>
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 text-black">
-          <table class="w-full text-sm text-left rtl:text-right text-black dark:text-black">
+        <div class="p-6 text-black overflow-x-auto">
+          <table class="w-full text-sm text-left rtl:text-right text-black dark:text-black ">
             <thead class="text-xs text-white uppercase bg-blue-700">
               <tr>
                 <th scope="col" class="px-6 py-3">
@@ -42,6 +42,9 @@
         o">
             <tr class="bg-white border-b dark:bg-white dark:border-blue-700">
               <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
+              @php
+              \Carbon\Carbon::setLocale('ru')
+              @endphp
               {{\Carbon\Carbon::parse($report->date)->translatedFormat('j F Y')}}
               </th>
               <td class="px-6 py-4">
