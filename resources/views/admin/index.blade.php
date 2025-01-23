@@ -9,8 +9,8 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-black">
-          <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-black">
-            <thead class="text-xs text-white uppercase bg-blue-50 dark:bg-blue-700 dark:text-white">
+          <table class="w-full text-sm text-left rtl:text-right text-black">
+            <thead class="text-xs text-white uppercase bg-blue-700 ">
               <tr>
                 <th scope="col" class="px-6 py-3">
                   Дата Заявки
@@ -29,6 +29,9 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                   Услуга
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Статус
                 </th>
               </tr>
             </thead>
@@ -53,6 +56,25 @@
               </td>
               <td class="px-6 py-4">
               {{ $report->service->title }}
+              </td>
+              <td class="px-6 py-4">
+              @if($report->status == 'новая')
+          <form class=" w-full p-5" id="form-update-{{$report->id}}" action="{{route('reports.update')}}"
+          method="POST">
+          @csrf
+          @method('PATCH')
+          <input type="hidden" name="id" value="{{$report->id}}">
+          <select class=" w-full" name="status"
+          onchange="document.getElementById('form-update-{{$report->id}}').submit()">
+          <option value="новая">Новая</option>
+          <option value="оказана">Оказана</option>
+          <option value="отменена">Отменена</option>
+          </select>
+          </form>
+        @else
+        <p class=" w-full p-5">{{ $report->status }}</p>
+      @endif
+
               </td>
             </tr>
 

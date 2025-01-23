@@ -41,7 +41,20 @@ class ReportController extends Controller
             'payment' => $data['payment'],
             'service_id' => $request['service'],
             'user_id' => Auth::user()->id,
+            'status' => 'новая'
         ]);
         return redirect()->route('dashboard');
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->validate([
+            'status' => ['required'],
+            'id' => ['required'],
+        ]);
+        Report::where('id', $request->id)->update([
+            'status'=> $request->status,
+        ]);
+        return redirect()->back();
     }
 }
