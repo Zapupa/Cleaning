@@ -20,9 +20,23 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert([
+            [
+                'name' => "admin",
+                'middlename' => "admin",
+                'lastname' => "admin",
+                'login' => "adminka",
+                'tel' => "admin",
+                'email' => "admin@gmail.com",
+                'password' => '$2y$12$UsEl1W8OkSbTKV6/v8uoW.qlOal2KUkKObh.CFsxiy.CIofz319o2',
+                'role' => "admin",
+            ],
+        ]);
     }
 
     /**
