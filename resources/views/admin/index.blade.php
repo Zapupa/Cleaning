@@ -13,6 +13,9 @@
             <thead class="text-xs text-white uppercase bg-blue-700 ">
               <tr>
                 <th scope="col" class="px-6 py-3">
+                  Покупатель
+                </th>
+                <th scope="col" class="px-6 py-3">
                   Дата Заявки
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -39,6 +42,9 @@
               @foreach($reports as $report)<div class="relative overflow-x-aut
         o">
             <tr class="bg-white border-b dark:bg-white dark:border-blue-700">
+              <td class="px-6 py-4">
+              {{ $report->user->login }}
+              </td>
               <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
               {{\Carbon\Carbon::parse($report->date)->translatedFormat('j F Y')}}
               </th>
@@ -64,7 +70,7 @@
           @csrf
           @method('PATCH')
           <input type="hidden" name="id" value="{{$report->id}}">
-          <select class=" w-full" name="status"
+          <select class=" w-full shrink-0" name="status"
           onchange="document.getElementById('form-update-{{$report->id}}').submit()">
           <option value="новая">Новая</option>
           <option value="оказана">Оказана</option>
