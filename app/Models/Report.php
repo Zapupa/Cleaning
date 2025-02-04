@@ -18,6 +18,7 @@ class Report extends Model
         'payment',
         'service_id',
         'user_id',
+        'path_img',
         'status'
     ];
 

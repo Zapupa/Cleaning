@@ -35,40 +35,48 @@
                 <th scope="col" class="px-6 py-3">
                   Статус
                 </th>
+                <th scope="col" class="px-6 py-3">
+                  Картинка
+                </th>
               </tr>
             </thead>
             <tbody>
               @foreach($reports as $report)<div class="relative overflow-x-aut
-        o">
-            <tr class="bg-white border-b dark:bg-white dark:border-blue-700">
-              <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
-              @php
-              \Carbon\Carbon::setLocale('ru')
-              @endphp
-              {{\Carbon\Carbon::parse($report->date)->translatedFormat('j F Y')}}
-              </th>
-              <td class="px-6 py-4">
-              {{ $report->time }}
-              </td>
-              <td class="px-6 py-4">
-              {{ $report->address }}
-              </td>
-              <td class="px-6 py-4">
-              {{ $report->contact }}
-              </td>
-              <td class="px-6 py-4">
-              {{ $report->payment }}
-              </td>
-              <td class="px-6 py-4">
-              {{ $report->service->title }}
-              </td>
-              <td class="px-6 py-4">
-              {{ $report->status }}
-              </td>
-            </tr>
+                o">
+                <tr class="bg-white border-b dark:bg-white dark:border-blue-700">
+                  <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-black">
+                  @php
+            \Carbon\Carbon::setLocale('ru')
+        @endphp
+                  {{\Carbon\Carbon::parse($report->date)->translatedFormat('j F Y')}}
+                  </th>
+                  <td class="px-6 py-4">
+                  {{ $report->time }}
+                  </td>
+                  <td class="px-6 py-4">
+                  {{ $report->address }}
+                  </td>
+                  <td class="px-6 py-4">
+                  {{ $report->contact }}
+                  </td>
+                  <td class="px-6 py-4">
+                  {{ $report->payment }}
+                  </td>
+                  <td class="px-6 py-4">
+                  {{ $report->service->title }}
+                  </td>
+                  <td class="px-6 py-4">
+                  {{ $report->status }}
+                  </td>
+                  <td class="px-6 py-4">
+                  @isset($report->path_img)
+            <img src="/images/{{$report->path_img}}" class="contact-block__img" alt="{{$report->path_img}}">
+          @endisset
+                  </td>
+                </tr>
 
 
-            </div>
+                </div>
         @endforeach
             </tbody>
           </table>

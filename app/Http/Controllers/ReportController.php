@@ -32,13 +32,20 @@ class ReportController extends Controller
             'time' => 'string',
             'payment' => 'string',
             'service' => 'string',
+            'path_img' => 'image|mimes:png,jpg,jpeg,gif|max:800'
         ]);
+
+        $imageName = time() . '.png'; // f[f[f[f]]]
+
+        $data['path_img']->move(public_path('images'), $imageName);
+
         Report::create([
             'address' => $data['address'],
             'contact' => $data['contact'],
             'date' => $data['date'],
             'time' => $data['time'],
             'payment' => $data['payment'],
+            'path_img' => $imageName,
             'service_id' => $request['service'],
             'user_id' => Auth::user()->id,
             'status' => 'новая'
@@ -53,7 +60,7 @@ class ReportController extends Controller
             'id' => ['required'],
         ]);
         Report::where('id', $request->id)->update([
-            'status'=> $request->status,
+            'status' => $request->status,
         ]);
         return redirect()->back();
     }
